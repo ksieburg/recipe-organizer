@@ -1,0 +1,241 @@
+{
+  "languageModel": {
+    "types": [
+      {
+        "name": "GetRecipeQuickOrLong",
+        "values": [
+          {
+            "id": null,
+            "name": {
+              "value": "Quick",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Long",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Don't Care",
+              "synonyms": []
+            }
+          }
+        ]
+      },
+      {
+        "name": "LongOrQuick",
+        "values": [
+          {
+            "id": null,
+            "name": {
+              "value": "Quick",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Long",
+              "synonyms": []
+            }
+          }
+        ]
+      },
+      {
+        "name": "RecipeLocation",
+        "values": [
+          {
+            "id": null,
+            "name": {
+              "value": "Cookbook",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Index card",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Bookmark",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Webpage",
+              "synonyms": []
+            }
+          }
+        ]
+      }
+    ],
+    "intents": [
+      {
+        "name": "AddRecipeIntent",
+        "samples": [
+          "Add a recipe"
+        ],
+        "slots": [
+          {
+            "name": "RecipeName",
+            "type": "AMAZON.Food"
+          },
+          {
+            "name": "RecipeLocation",
+            "type": "RecipeLocation"
+          },
+          {
+            "name": "LongOrQuick",
+            "type": "LongOrQuick"
+          }
+        ]
+      },
+      {
+        "name": "AMAZON.CancelIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.HelpIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.StopIntent",
+        "samples": []
+      },
+      {
+        "name": "DeleteRecipeIntent",
+        "samples": [
+          "Delete a recipe"
+        ],
+        "slots": [
+          {
+            "name": "RecipeName",
+            "type": "AMAZON.Food"
+          }
+        ]
+      },
+      {
+        "name": "GetAllRecipesIntent",
+        "samples": [
+          "List All",
+          "Get All",
+          "List All Recipes",
+          "Get All Recipe"
+        ],
+        "slots": [
+          {
+            "name": "GetRecipeQuickOrLong",
+            "type": "GetRecipeQuickOrLong"
+          }
+        ]
+      },
+      {
+        "name": "GetRandomRecipeIntent",
+        "samples": [
+          "Get a random recipe",
+          "get random"
+        ],
+        "slots": [
+          {
+            "name": "GetRecipeQuickOrLong",
+            "type": "GetRecipeQuickOrLong"
+          }
+        ]
+      },
+      {
+        "name": "GetRecipeIntent",
+        "samples": [
+          "Get a recipe"
+        ],
+        "slots": [
+          {
+            "name": "RecipeName",
+            "type": "AMAZON.Food"
+          }
+        ]
+      }
+    ],
+    "invocationName": "recipe organizer"
+  },
+  "prompts": [
+    {
+      "id": "Elicit.Intent-AddRecipeIntent.IntentSlot-RecipeName",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "What is the name of the recipe?"
+        }
+      ]
+    },
+    {
+      "id": "Elicit.Intent-GetAllRecipesIntent.IntentSlot-GetRecipeQuickOrLong",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "Do you want a quick or long recipe or do you not care?"
+        }
+      ]
+    }
+  ],
+  "dialog": {
+    "intents": [
+      {
+        "name": "AddRecipeIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "RecipeName",
+            "type": "AMAZON.Food",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicitation": "Elicit.Intent-AddRecipeIntent.IntentSlot-RecipeName"
+            }
+          },
+          {
+            "name": "RecipeLocation",
+            "type": "RecipeLocation",
+            "elicitationRequired": false,
+            "confirmationRequired": false,
+            "prompts": {}
+          },
+          {
+            "name": "LongOrQuick",
+            "type": "LongOrQuick",
+            "elicitationRequired": false,
+            "confirmationRequired": false,
+            "prompts": {}
+          }
+        ]
+      },
+      {
+        "name": "GetAllRecipesIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "GetRecipeQuickOrLong",
+            "type": "GetRecipeQuickOrLong",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicitation": "Elicit.Intent-GetAllRecipesIntent.IntentSlot-GetRecipeQuickOrLong"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
