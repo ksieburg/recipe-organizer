@@ -1,6 +1,5 @@
 const alexaSDK = require('alexa-sdk');
 const awsSDK = require('aws-sdk');
-const util = require('util');
 
 const appId = 'amzn1.ask.skill.d4d54bbf-af45-4901-81d9-4c7c85da9c8c';
 const recipesTable = 'Recipes';
